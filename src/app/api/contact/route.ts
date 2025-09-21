@@ -64,3 +64,48 @@
 //     .replace(/"/g, '&quot;')
 //     .replace(/'/g, '&#039;');
 // }
+// /app/api/gmail/send/route.ts
+import { NextResponse } from 'next/server';
+import { google } from 'googleapis';
+export const runtime = 'nodejs';
+
+function oAuth() {
+  const o = new google.auth.OAuth2(
+    process.env.GOOGLE_CLIENT_ID!,
+    process.env.GOOGLE_CLIENT_SECRET!,
+    process.env.GOOGLE_REDIRECT_URI!
+  );
+  o.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN! });
+  return o;
+}
+
+function toBase64Url(str: string) {
+  return Buffer.from(str)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_');
+}
+
+export async function POST(req: Request) {
+  try {
+    const { to, subject, text } = await req.json();
+    const user = process.env.GMAIL_API_USER!;
+    const raw =
+      `From: <${user}>\r\n` +
+      `To: <${to}>\r\n` +
+      `Subject: ${subject}\r\n` +
+      `Content-Type: text/plain; charset="UTF-8"\r\n\r\n` +
+      text;
+
+    const gmail = google.gmail({ version: 'v1', auth: oAuth() });
+    const res = await gmail.users.messages.send({
+      userId: 'me',
+      requestBody: { raw: toBase64Url(raw) },
+    });
+
+    return NextResponse.json({ ok: true, id: res.data.id });
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json({ error: 'send failed' }, { status: 500 });
+  }
+}
