@@ -2,13 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  motion,
-  useInView,
-  useAnimationControls,
-  type Variants,
-} from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { motion, type Variants } from 'framer-motion';
 
 type ExperienceItem = {
   id: number;
@@ -58,248 +52,191 @@ const ITEMS: ExperienceItem[] = [
   },
 ];
 
-const easeEnter = [0.17, 0.55, 0.55, 1] as const;
-
-const headerDown: Variants = {
-  hidden: { opacity: 0, y: -60 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeEnter } },
-};
-
-// KNOB/NUMBER
-const knobUpRight: Variants = {
-  hidden: { opacity: 0, y: 24, scale: 0.95 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.2, ease: easeEnter, delay: 0.05 + i * 0.06 },
-  }),
-};
-const knobUpLeft: Variants = {
-  hidden: { opacity: 0, y: 24, scale: 0.95 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.2, ease: easeEnter, delay: 0.05 + i * 0.06 },
-  }),
-};
-
-const rightCard: Variants = {
-  hidden: { opacity: 0, x: 100 },
-  show: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.35, ease: easeEnter, delay: 0.1 + i * 0.08 },
-  }),
-};
-const leftCard: Variants = {
-  hidden: { opacity: 0, x: -100 },
-  show: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.35, ease: easeEnter, delay: 0.1 + i * 0.08 },
-  }),
-};
-
-const lineUpVar: Variants = {
-  hidden: { scaleY: 0 },
-  show: (i: number) => ({
-    scaleY: 1,
-    transition: { duration: 0.35, ease: easeEnter, delay: 0.04 + i * 0.06 },
-  }),
-};
-const lineDownVar: Variants = {
-  hidden: { scaleY: 0 },
-  show: (i: number) => ({
-    scaleY: 1,
-    transition: { duration: 0.4, ease: easeEnter, delay: 0.12 + i * 0.08 },
-  }),
-};
-
-const decorRight: Variants = {
-  hidden: { opacity: 0, x: 120 },
+/* ===========
+   Variants
+   =========== */
+const container: Variants = {
+  hidden: { opacity: 1 },
   show: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: easeEnter, delay: 0.15 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.12 },
+  },
+};
+
+const fadeDownHeader: Variants = {
+  hidden: { opacity: 0, y: -32 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const rowsContainer: Variants = {
+  hidden: { opacity: 1 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.25, delayChildren: 0.1 },
+  },
+};
+
+const fadeDownRow: Variants = {
+  hidden: { opacity: 0, y: -24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const fadeDownItem: Variants = {
+  hidden: { opacity: 0, y: -12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } },
+};
+
+// stagger
+const cardContainer: Variants = {
+  hidden: { opacity: 1 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
   },
 };
 
 export default function ExperienceSection() {
-  const rootRef = useRef<HTMLElement | null>(null);
-  const inView = useInView(rootRef, { once: true, amount: 0.35 });
-
-  const headerCtrl = useAnimationControls();
-  const knobRightCtrl = useAnimationControls();
-  const cardRightCtrl = useAnimationControls();
-  const knobLeftCtrl = useAnimationControls();
-  const cardLeftCtrl = useAnimationControls();
-  const decorCtrl = useAnimationControls();
-
-  useEffect(() => {
-    if (!inView) return;
-    (async () => {
-      await headerCtrl.start('show');
-      await knobRightCtrl.start('show');
-      await cardRightCtrl.start('show');
-      await knobLeftCtrl.start('show');
-      await cardLeftCtrl.start('show');
-      await decorCtrl.start('show');
-    })();
-  }, [
-    inView,
-    headerCtrl,
-    knobRightCtrl,
-    cardRightCtrl,
-    knobLeftCtrl,
-    cardLeftCtrl,
-    decorCtrl,
-  ]);
-
-  let rightIdxKnob = 0,
-    rightIdxCard = 0;
-  let leftIdxKnob = 0,
-    leftIdxCard = 0;
-
   return (
     <motion.section
-      ref={rootRef}
-      className='relative isolate mx-auto flex w-full max-w-[1440px] flex-col items-center bg-black py-10 text-white md:py-30'
+      id='experience'
+      className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center bg-black py-10 text-white md:py-20'
+      variants={container}
+      initial='hidden'
+      whileInView='show'
+      viewport={{ once: true, amount: 0.25 }}
     >
-      <motion.div className='custom-container mx-auto w-full'>
-        {/* Decor */}
-        <motion.div
-          variants={decorRight}
-          initial='hidden'
-          animate={decorCtrl}
-          className='absolute -right-6 bottom-6 z-20 hidden h-[92px] w-[138px] rotate-90 lg:block'
-          aria-hidden
-        >
-          <div className='absolute top-0 left-0 h-[46px] w-[46px] bg-[#1D3300]' />
-          <div className='absolute top-[46px] left-[46px] h-[46px] w-[46px] bg-[#1D3300]' />
-          <div className='absolute top-0 left-[92px] h-[46px] w-[46px] bg-[#1D3300]' />
-        </motion.div>
+      <div className='custom-container w/full mx-auto flex flex-col gap-6 md:gap-16'>
+        {/* Desktop: (rotated) */}
+        <div className='absolute -right-6 bottom-6 z-20 order-2 hidden h-23 w-34.5 flex-none grow-0 rotate-90 md:hidden lg:block'>
+          <div className='bg-primary-400 absolute top-0 left-0 h-11.5 w-11.5' />
+          <div className='bg-primary-400 absolute top-11.5 left-11.5 h-11.5 w-11.5' />
+          <div className='bg-primary-400 absolute top-0 left-23 h-11.5 w-11.5' />
+        </div>
 
-        {/* Header */}
+        {/* Header (ANIMATED) */}
         <motion.div
-          variants={headerDown}
-          initial='hidden'
-          animate={headerCtrl}
-          className='mt-10 text-center md:mt-14'
+          className='relative isolate mx-auto flex h-32.5 w-73 flex-col items-center gap-2 md:h-25 md:w-127.25'
+          variants={fadeDownHeader}
         >
-          <span className='text-base font-medium text-[#91FF02] md:text-lg'>
+          <span className='text-primary-200 text-md font-medium md:text-lg'>
             EXPERIENCE
           </span>
-          <h2 className='mt-1 text-3xl font-extrabold text-[#FDFDFD] md:text-5xl'>
+          <h2 className='text-neutral-25 text-display-md md:text-display-2xl text-center font-extrabold'>
             PROFESIONAL WORK
           </h2>
         </motion.div>
 
-        {/* Rows */}
-        <div className='mt-6 space-y-6 md:mt-16 md:space-y-10'>
+        {/* Rows (ANIMATED CONTAINER) */}
+        <motion.div
+          className='space-y-6 md:space-y-10'
+          variants={rowsContainer}
+        >
           {ITEMS.map((item, idx) => {
             const isOdd = (idx + 1) % 2 === 1;
             const isFirst = idx === 0;
             const isLast = idx === ITEMS.length - 1;
 
-            const knobCtrl = isOdd ? knobRightCtrl : knobLeftCtrl;
-            const cardCtrl = isOdd ? cardRightCtrl : cardLeftCtrl;
-            const knobIndex = isOdd ? rightIdxKnob++ : leftIdxKnob++;
-            const cardIndex = isOdd ? rightIdxCard++ : leftIdxCard++;
-
             return (
-              <div
+              <motion.div
                 key={item.id}
                 className='grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 md:gap-x-16 lg:grid-cols-[minmax(0,1fr)_3rem_minmax(0,1fr)]'
+                variants={fadeDownRow}
               >
-                {/* Spacer (desktop) */}
+                {/* Desktop spacer left/right */}
                 <div
                   className={`hidden lg:block ${isOdd ? '' : 'order-3'}`}
                   style={{ width: 'clamp(19.0625rem, 40.87vw, 31.875rem)' }}
                   aria-hidden
                 />
 
-                {/* Timeline + knob */}
+                {/* Knob/number */}
                 <div
-                  className={`relative min-h-[342px] md:min-h-[286px] ${isOdd ? '' : 'lg:order-2'}`}
+                  className={`relative min-h-85.5 md:min-h-71.5 ${
+                    isOdd ? '' : 'lg:order-2'
+                  }`}
                 >
                   {!isFirst && (
-                    <motion.div
-                      variants={lineUpVar}
-                      initial='hidden'
-                      animate={knobCtrl}
-                      custom={knobIndex}
-                      className='absolute top-0 bottom-1/2 left-1/2 w-px origin-bottom -translate-x-1/2 bg-[#252B37] will-change-transform'
-                    />
+                    <div className='absolute top-0 bottom-1/2 left-1/2 w-px -translate-x-1/2 bg-neutral-800' />
                   )}
-
                   {!isLast && (
-                    <motion.div
-                      variants={lineDownVar}
-                      initial='hidden'
-                      animate={cardCtrl}
-                      custom={cardIndex}
-                      className='absolute top-1/2 left-1/2 h-[810px] w-px origin-top -translate-x-1/2 bg-[#252B37] will-change-transform md:h-[300px]'
-                    />
+                    <div className='absolute top-1/2 left-1/2 h-75 w-px origin-top -translate-x-1/2 bg-neutral-800 will-change-transform md:h-75' />
                   )}
-
-                  {/* Knob */}
                   <motion.span
-                    variants={isOdd ? knobUpRight : knobUpLeft}
-                    initial='hidden'
-                    animate={knobCtrl}
-                    custom={knobIndex}
-                    className='absolute top-1/2 left-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#252B37] bg-black font-bold text-[#91FF02] md:h-12 md:w-12'
+                    className='text-primary-200 absolute top-1/2 left-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-800 bg-black font-bold md:h-12 md:w-12'
+                    variants={fadeDownItem}
                   >
                     {item.id}
                   </motion.span>
                 </div>
 
                 {/* Card */}
-                <motion.div
-                  variants={isOdd ? rightCard : leftCard}
-                  initial='hidden'
-                  animate={cardCtrl}
-                  custom={cardIndex}
-                  className={`min-w-0 ${isOdd ? '' : 'lg:order-1'}`}
-                >
+                <div className={`min-w-0 ${isOdd ? '' : 'lg:order-1'}`}>
                   <CardItem item={item} />
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
             );
           })}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </motion.section>
   );
 }
 
 /* subcomponent */
 function CardItem({ item }: { item: ExperienceItem }) {
-  const article = (
-    <article className='min-h-[342px] rounded-2xl border border-[#252B37] bg-black p-4 transition-colors hover:border-[#91FF02] md:min-h-[286px] md:rounded-3xl md:p-6'>
-      <div className='flex flex-wrap items-start justify-between gap-3'>
+  const body = (
+    <motion.article
+      className='hover:border-primary-200 min-h-85.5 rounded-2xl border border-neutral-800 bg-black p-4 transition-colors md:min-h-71.5 md:rounded-3xl md:p-6'
+      variants={cardContainer}
+      initial='hidden'
+      whileInView='show'
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <div className='flex flex-wrap items-start justify-between gap-1'>
         <div className='min-w-0'>
-          <p className='text-sm text-[#A4A7AE] md:text-lg'>{item.period}</p>
-          <p className='mt-1 text-base font-bold text-[#FDFDFD] md:text-2xl'>
+          <motion.p
+            className='font-reguler text-sm text-neutral-400 md:text-lg md:font-medium'
+            variants={fadeDownItem}
+          >
+            {item.period}
+          </motion.p>
+          <motion.p
+            className='text-neutral-25 text-md md:text-display-xs mt-1 font-bold'
+            variants={fadeDownItem}
+          >
             {item.role}
-          </p>
+          </motion.p>
         </div>
-        <div className='relative h-8 w-[114px] md:h-12'>
+
+        <motion.div
+          className='relative h-8 w-[114px] md:h-12'
+          variants={fadeDownItem}
+        >
           <Image
             src={item.logo}
             alt='Company'
             fill
             sizes='114px'
-            className='object-contain'
+            className='object-contain object-left'
           />
-        </div>
+        </motion.div>
       </div>
-      <p className='mt-4 text-sm leading-7 text-[#A4A7AE] md:text-base'>
+
+      <motion.p
+        className='font-regular md:text-md mt-4 text-sm leading-7 text-neutral-400'
+        variants={fadeDownItem}
+      >
         {item.description}
-      </p>
-    </article>
+      </motion.p>
+    </motion.article>
   );
 
   return item.href ? (
@@ -309,9 +246,9 @@ function CardItem({ item }: { item: ExperienceItem }) {
       rel='noopener noreferrer'
       className='block min-w-0'
     >
-      {article}
+      {body}
     </Link>
   ) : (
-    article
+    body
   );
 }

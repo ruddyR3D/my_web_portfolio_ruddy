@@ -73,11 +73,34 @@ export const TESTIMONIALS: Testimonial[] = [
       'Clean, maintainable code and thorough PRs. Would absolutely work together again.',
   },
   {
+    name: 'Trevor',
+    role: 'CEO',
+    companyLogo: '/icons/icon-zoom.svg',
+    rating: 5,
+    feedback:
+      '“Working with Mark has been a pleasure. His ability to integrate both front-end and back-end elements seamlessly has been a key asset to our project’s success”.',
+  },
+  {
     name: 'Maya Rahman',
     role: 'Design Lead',
     companyLogo: '/icons/icon-youtube.svg',
     rating: 5,
     feedback:
       'Great eye for detail. Turned complex interactions into simple, delightful flows.',
+  },
+  {
+    name: 'Jesicca',
+    role: 'Enginering Dev',
+    companyLogo: '/icons/icon-amazon.svg',
+    rating: 5,
+    feedback: 'Organized their work and internal management was outstanding..',
+  },
+  {
+    name: 'Michele',
+    role: 'Software Enginering',
+    companyLogo: '/icons/icon-netflix.svg',
+    rating: 5,
+    feedback:
+      'Thanks to their expertise, our website is now faster, more responsive, and visually stunning. We’ve seen a significant increase in user engagement.',
   },
 ];

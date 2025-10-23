@@ -24,7 +24,7 @@ const buttonVariants = cva(
         sm: 'h-10 px-4 text-xs',
         md: 'h-12 px-6 text-sm',
         lg: 'h-14 px-7 text-base',
-        // untuk tombol bulat/ikon
+
         xl: 'h-24 w-24 p-0 text-base',
       },
     },

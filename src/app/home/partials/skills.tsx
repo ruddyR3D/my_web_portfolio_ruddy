@@ -57,7 +57,6 @@ export default function SkillsSection({
     { label: 'Docker', percent: 70 },
     { label: 'JavaScript', percent: 90 },
   ],
-  className = '',
 }: SkillsSectionProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const inView = useInView(sectionRef, { amount: 0.25, once: true });
@@ -66,40 +65,40 @@ export default function SkillsSection({
     <section
       ref={sectionRef}
       id='skills'
-      className='relative isolate mx-auto flex w-full max-w-[1440px] flex-col items-center bg-black py-10 text-white md:py-20'
+      className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center bg-black py-10 text-white md:py-20'
     >
       {/* Wrapper & padding */}
       <div className='custom-container mx-auto w-full'>
-        <div className='grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-[58px]'>
+        <div className='grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-14.5'>
           {/*  LEFT: Content  */}
           <motion.div
             variants={leftColumn}
             initial='hidden'
             animate={inView ? 'show' : 'hidden'}
-            className='flex min-w-0 flex-col gap-[24px] md:my-16 md:gap-[58px]'
+            className='my-auto flex min-w-0 flex-col gap-6 md:gap-14.5'
           >
             <motion.div
               variants={leftStagger}
               initial='hidden'
               animate={inView ? 'show' : 'hidden'}
-              className='flex flex-col gap-2 md:gap-2'
+              className='flex flex-col gap-2'
               aria-describedby='skills-subtitle'
             >
-              <motion.h2
-                variants={leftItem}
-                id='skills-title'
-                className='text-[16px] leading-[30px] font-medium text-[#91FF02] md:text-[18px] md:leading-[32px]'
-              >
-                {title}
-              </motion.h2>
-
               <motion.p
                 variants={leftItem}
+                id='skills-title'
+                className='text-primary-200 text-md leading-[30px] font-medium md:text-lg md:leading-[32px]'
+              >
+                {title}
+              </motion.p>
+
+              <motion.h2
+                variants={leftItem}
                 id='skills-subtitle'
-                className='max-w-[52ch] text-[32px] leading-[46px] font-extrabold text-[#FDFDFD] md:text-[48px] md:leading-[60px]'
+                className='text-neutral-25 md:text-display-2xl text-display-md max-w-[52ch] leading-[46px] font-extrabold md:leading-[60px]'
               >
                 {subtitle}
-              </motion.p>
+              </motion.h2>
             </motion.div>
 
             {/* Icons */}
@@ -111,7 +110,7 @@ export default function SkillsSection({
             >
               {icons.map((name) => (
                 <motion.li key={name} variants={leftItem}>
-                  <div className='flex size-12 items-center justify-center rounded-full border border-[#252B37] p-1.5 md:size-16 md:p-1.5'>
+                  <div className='flex size-12 items-center justify-center rounded-full border border-neutral-800 p-1.5 md:size-16 md:p-1.5'>
                     <div className='flex size-9 items-center justify-center rounded-full bg-black md:size-12'>
                       <Image
                         src={`/icons/${name}.svg`}
@@ -167,7 +166,7 @@ function SkillBar({
       {/* Track + Label */}
       <div className='flex w-full items-center gap-4 md:gap-6'>
         {/* Green label */}
-        <div className='relative w-full max-w-[602px]'>
+        <div className='relative w-full max-w-150.5'>
           <motion.div
             initial={{ width: 0 }}
             animate={inView ? { width: `${pct}%` } : { width: 0 }}
@@ -176,7 +175,7 @@ function SkillBar({
               delay: 0.08 * index,
               ease: easeCurve,
             }}
-            className='relative inline-flex h-10 items-center overflow-hidden rounded-xl bg-[#3A6601] px-4 py-2 md:h-16 md:rounded-3xl md:px-6 md:py-3'
+            className='bg-primary-300 relative inline-flex h-10 items-center overflow-hidden rounded-xl px-4 py-2 md:h-16 md:rounded-3xl md:px-6 md:py-3'
             aria-hidden={false}
           >
             {/* Diagonal stripes overlay */}
@@ -189,7 +188,7 @@ function SkillBar({
               }}
             />
             {/* Label text */}
-            <span className='relative z-10 text-[14px] leading-7 font-semibold text-[#FDFDFD] md:text-[18px] md:leading-8'>
+            <span className='text-neutral-25 relative z-10 text-sm leading-7 font-semibold md:text-lg md:leading-8'>
               {label}
             </span>
           </motion.div>
@@ -209,7 +208,7 @@ function SkillBar({
                 aria-hidden
               />
               <div
-                className={`${pct >= 100 ? 'hidden' : 'flex-1 border-t border-[#252B37]'}`}
+                className={`${pct >= 100 ? 'hidden' : 'flex-1 border-t border-neutral-800'}`}
                 aria-hidden={pct >= 100}
               />
             </div>
@@ -218,7 +217,7 @@ function SkillBar({
       </div>
 
       {/* Percent right */}
-      <div className='w-12 shrink-0 text-right text-[14px] leading-[28px] font-semibold text-white md:w-16 md:text-[20px] md:leading-[34px]'>
+      <div className='w-12 shrink-0 text-right text-sm leading-[28px] font-semibold text-white md:w-16 md:text-xl md:leading-[34px]'>
         {pct}%
       </div>
     </div>

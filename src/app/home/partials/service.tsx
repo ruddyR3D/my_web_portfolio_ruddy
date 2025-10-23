@@ -24,19 +24,18 @@ const SERVICES: Service[] = [
     id: 2,
     number: '02',
     icon: '/icons/monitor.svg',
-    title: 'Web App Development',
-    desc: 'Modern SPAs/SSR with robust state, data fetching, and performance best practices.',
+    title: 'Web Performance Optimization',
+    desc: 'Enhancing website speed, SEO, and overall performance for better.',
   },
   {
     id: 3,
     number: '03',
     icon: '/icons/monitor.svg',
-    title: 'UI Engineering',
-    desc: 'Pixel-perfect UI, accessibility, animations, and design-system integration.',
+    title: 'Website Maintenance & Debugging',
+    desc: 'Fixing bugs, improving UI, and ensuring smooth performance over time.',
   },
 ];
 
-/* ====== Animation setup (turun dari atas) ====== */
 const easeCurve: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const headerDown: Variants = {
@@ -70,41 +69,38 @@ export default function ServiceSection() {
       initial='hidden'
       whileInView='show'
       viewport={{ once: true, amount: 0.3 }}
-      className={cn(
-        'relative isolate border-t-0 bg-black md:border-t md:border-[#252B37]'
-      )}
+      className='relative isolate flex border-t-0 bg-black md:border-t md:border-neutral-800'
     >
-      <div className='custom-container w-full flex-col px-4 py-12 sm:px-6 md:px-6 md:py-20'>
+      <div className='custom-container flex w-full flex-col gap-6 py-10 md:gap-12 md:py-30'>
         {/* Services Header */}
         <motion.div
           variants={headerDown}
           className={cn(
-            'flex flex-col md:flex-row md:items-center md:justify-between',
-            'gap-4 md:gap-[121px]'
+            'flex flex-col md:flex-row md:items-start md:justify-between',
+            'md:gap-auto gap-4'
           )}
         >
           {/* Services Title */}
-          <div className='w/full mx-auto flex flex-col items-center gap-2 md:mx-0 md:w-[509px] md:gap-2'>
-            <p className="w-full text-left font-['Red_Hat_Display'] text-[16px] leading-[30px] font-medium text-[#91FF02] md:text-[18px] md:leading-[32px]">
+          <div className='flex w-full flex-col justify-start gap-2 md:mx-0 md:w-127.25 md:gap-2'>
+            <p className='text-md text-primary-200 w-full text-left leading-[30px] font-medium md:text-lg md:leading-8'>
               Services
             </p>
-            <h2 className="w-full text-left font-['Red_Hat_Display'] text-[32px] leading-[46px] font-extrabold text-[#FDFDFD] md:text-[48px] md:leading-[60px]">
+            <h2 className='text-display-md text-neutral-25 md:text-display-2xl w-full text-left leading-[46px] font-extrabold md:leading-[60px]'>
               MY SERVICE EXPERTISE
             </h2>
           </div>
-
-          <p className="mx-auto w-full font-['Red_Hat_Display'] text-[16px] leading-[30px] text-[#A4A7AE] md:mx-0 md:w-[504px] md:text-right md:text-[20px] md:leading-[34px]">
-            Creating modern, intuitive, and visually consistent web experiences
-            that align with industry trends and user expectations.
-          </p>
+          <div className='flex w-full flex-col md:w-126 md:py-7.25'>
+            <p className='text-md mx-auto w-full leading-[30px] font-medium tracking-tighter text-neutral-400 md:mx-0 md:text-right md:text-xl md:leading-[34px]'>
+              Creating modern, intuitive, and visually consistent web
+              experiences that align with industry trends and user expectations.
+            </p>
+          </div>
         </motion.div>
 
         {/* Services Cards (drop down + stagger) */}
         <motion.div
           variants={gridStagger}
-          className={cn(
-            'mt-10 grid grid-cols-1 gap-[24px] md:mt-12 md:grid-cols-3 md:gap-[40px]'
-          )}
+          className={cn('grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-10')}
         >
           {SERVICES.map((s, i) => (
             <motion.article
@@ -112,38 +108,38 @@ export default function ServiceSection() {
               variants={cardDrop}
               className={cn(
                 'flex flex-col',
-                'gap-[12px] md:gap-[24px]',
+                'gap-3 md:gap-6',
                 'bg-transparent'
               )}
             >
               {/* Number */}
-              <div className="w-full font-['Red_Hat_Display'] text-[16px] leading-[30px] text-[#A4A7AE] md:text-[20px] md:leading-[34px]">
+              <div className='text-md w-full leading-[30px] font-semibold text-neutral-400 md:text-xl md:leading-[34px]'>
                 {s.number}
               </div>
 
               {/* Separator line */}
-              <div className='w-full border-t border-[#252B37]' />
+              <div className='w-full border-t border-neutral-800' />
 
-              <div className='mt-2'>
-                <div className='relative h-[32px] w-[32px]'>
+              <div className='mt-0'>
+                <div className='relative h-8 w-8'>
                   <Image
                     src={s.icon}
                     alt='monitor icon'
                     fill
                     className='object-contain p-1'
-                    sizes='32px'
+                    sizes='8'
                     priority={i === 0}
                   />
                 </div>
               </div>
 
               {/* Title */}
-              <h3 className="mt-1 w-full font-['Red_Hat_Display'] text-[20px] leading-[34px] font-semibold text-white md:text-[28px] md:leading-[38px]">
+              <h3 className='text-neutral-25 md:text-display-sm mt-1 w-full text-xl leading-[34px] font-semibold md:leading-[38px]'>
                 {s.title}
               </h3>
 
               {/* Description */}
-              <p className="w-full font-['Red_Hat_Display'] text-[16px] leading-[30px] text-[#A4A7AE] md:text-[20px] md:leading-[34px]">
+              <p className='font-regular text-md w-full leading-[30px] text-neutral-400 md:text-xl md:leading-[34px]'>
                 {s.desc}
               </p>
             </motion.article>

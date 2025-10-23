@@ -1,4 +1,3 @@
-// components/ui/accordion-custom.tsx
 'use client';
 
 import * as React from 'react';
@@ -20,17 +19,14 @@ export const CustomAccordionTrigger = React.forwardRef<
         // layout
         'group flex w-full items-start gap-3 py-4 text-left outline-none',
 
-        // GARIS PEMBATAS default (tampil saat closed)
         'border-b border-[#252B37]',
 
-        // HILANGKAN garis saat item open
         'data-[state=open]:border-b-0',
 
         className
       )}
       {...props}
     >
-      {/* ikon stargreen yang berputar saat open (opsional) */}
       <Image
         src='/icons/stargreen.svg'
         alt='toggle'

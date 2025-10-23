@@ -1,4 +1,3 @@
-// components/icons/MaskIcon.tsx
 export default function MaskIcon({
   src,
   className,

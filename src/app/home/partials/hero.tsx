@@ -1,102 +1,179 @@
 'use client';
-import { FC } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { motion, type Variants } from 'framer-motion';
 
-const HeroSection: FC = () => {
+// Variants
+const fmStagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
+};
+
+const fmDown: Variants = {
+  hidden: { opacity: 0, y: -24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 260, damping: 24 },
+  },
+};
+
+// Reusable props
+const fmRootProps = {
+  initial: 'hidden',
+  whileInView: 'show',
+  viewport: { once: true, amount: 0.4 },
+  variants: fmStagger,
+};
+const fmItemProps = { variants: fmDown };
+
+const HeroSection = () => {
   return (
     <section
       id='home'
-      className='custom-container relative isolate mx-auto max-w-[1440px] overflow-hidden border-b-0 bg-black md:border-b md:border-[#252B37] md:px-33'
+      className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center bg-black py-10 md:py-20'
     >
-      {/* Decorative squares (mobile spec) */}
-      <div className='absolute top-[789px] left-0 hidden h-[92px] w-[138px] md:block'>
-        <Image src='/icons/rectangle.svg' alt='icon' width='138' height='138' />
+      {/* dekor (no motion) */}
+      <div className='absolute top-0 left-[192px] h-[663px] w-px bg-neutral-800 md:top-0 md:left-[375px] md:h-[926px]' />
+      <div className='absolute top-20 left-[290px] z-0 h-[542px] w-px bg-neutral-800 md:top-0 md:left-[707px] md:h-[926px]' />
+      <div
+        aria-hidden
+        className='absolute bottom-0 left-0 hidden h-23 w-34.5 md:block'
+      >
+        <div className='bg-primary-400 absolute top-11.5 left-0 h-11.5 w-11.5' />
+        <div className='bg-primary-400 absolute top-0 left-11.5 h-11.5 w-11.5' />
+        <div className='bg-primary-400 absolute top-11.5 left-23 h-11.5 w-11.5' />
       </div>
-      {/* Line 118 */}
-      <div className='absolute top-[-83px] left-[197px] h-[563px] w-px bg-[#252B37] md:top-0 md:left-[375px] md:h-[881px]' />
-      {/* Line 117 */}
-      <div className='absolute top-[1px] left-[296px] z-0 h-[482px] w-px translate-y-32 bg-[#252B37] md:top-0 md:left-[707px] md:h-[881px] md:translate-y-0' />
 
-      <div className='relative grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-0'>
-        {/* Left: Text */}
-        <div className='relative z-20 flex translate-y-45 flex-col gap-4 bg-black md:translate-y-40 md:bg-transparent'>
-          <div className='flex items-center gap-2'>
-            <span className='h-px w-[21px] bg-white md:w-[114px]' />
-            <p className='text-md text-neutral-25 font-medium md:text-xl'>
-              Hi, I am R3D Frontend Developer
-            </p>
+      <div className='custom-container mx-auto flex w-full flex-col'>
+        {/* ROOT stagger childrens left */}
+        <motion.div
+          {...fmRootProps}
+          className='flex flex-wrap gap-7 overflow-hidden pt-20.5 pb-10 md:pt-35.25 md:pb-20'
+        >
+          {/* left */}
+          <div className='z-20 flex-[5.9] basis-80'>
+            {/* Stagger stack texts */}
+            <motion.div
+              variants={fmStagger}
+              className='flex w-full max-w-201.75 flex-col gap-10 md:gap-15'
+            >
+              <div className='flex flex-col gap-4'>
+                <div className='flex items-center gap-2 md:gap-4'>
+                  <span className='h-px w-5.25 bg-white md:w-[114px]' />
+                  <motion.p
+                    {...fmItemProps}
+                    className='text-md text-neutral-25 leading-[30px] font-medium md:text-xl'
+                  >
+                    Hi, I am R3D Frontend Developer
+                  </motion.p>
+                </div>
+
+                <div className='flex w-full flex-col md:w-201.75'>
+                  <motion.h1
+                    {...fmItemProps}
+                    className='text-display-lg md:text-display-3xl leading-[48px] font-extrabold tracking-[-0.03em] text-white md:leading-tight md:tracking-widest lg:text-[69px] lg:leading-[78px]'
+                  >
+                    BUILDING FAST &amp;{' '}
+                    <span className='text-primary-200'>INTERACTIVE</span> WEB
+                    EXPERIENCES.
+                  </motion.h1>
+                </div>
+
+                <motion.p
+                  {...fmItemProps}
+                  className='max-w-[42ch] text-lg leading-[32px] font-medium text-neutral-400 md:text-xl'
+                >
+                  Bridging creativity and functionality to deliver stunning,
+                  user-friendly web applications
+                </motion.p>
+              </div>
+
+              {/* Button wrapper motion.*/}
+              <motion.div {...fmItemProps}>
+                <Button
+                  asChild
+                  className='flex h-11 w-full px-19 md:h-14 md:w-73.5'
+                >
+                  <Link href='#contact' className='text-md font-bold'>
+                    HIRE ME
+                  </Link>
+                </Button>
+              </motion.div>
+            </motion.div>
           </div>
+        </motion.div>
 
-          <h1 className='text-display-lg md:text-display-2xl font-extrabold tracking-[-0.01em] text-white sm:text-[44px] sm:leading-[56px] lg:text-[64px] lg:leading-[76px]'>
-            BUILDING FAST & <span className='text-[#91FF02]'>INTERACTIVE</span>{' '}
-            WEB EXPERIENCES.
-          </h1>
+        {/* right */}
+        <div className='flex-[4.1] basis-80 md:absolute md:top-1/2 md:right-0 md:h-220.25 md:w-165 md:-translate-y-108'>
+          <div className='relative h-116.5 w-full bg-black md:h-220.25'>
+            {/* dekor (no motion) */}
+            <div className='bg-primary-200 absolute inset-y-0 -right-6 left-1/2 md:-right-0' />
 
-          <p className='max-w-[42ch] text-lg font-medium text-[#A4A7AE] md:text-xl'>
-            Bridging creativity and functionality to deliver stunning,
-            user-friendly web applications
-          </p>
-
-          <div className='mb-10 pt-5 md:pt-15 md:pb-0'>
-            <Button asChild className='flex h-11 w-full px-19 md:h-12 md:w-fit'>
-              <Link href='#contact' className='text-sm font-bold'>
-                HIRE ME
-              </Link>
-            </Button>
-          </div>
-        </div>
-
-        {/* Right: Profile / Card */}
-        <div className='relative z-10 h-[513px] w-full max-w-[661px] place-self-center sm:h-[620px] lg:h-[881px] lg:translate-x-37'>
-          {/* Green backing block (desktop spec) */}
-          <div className='absolute top-0 right-0 h-full w-[187px] bg-[#91FF02] sm:w-[215px] lg:block lg:w-[316px]' />
-
-          {/* Photo */}
-          <div className='absolute top-0 left-0 h-full w-full'>
-            <Image
-              src='/images/pict.png'
-              alt='Portrait of a young man'
-              fill
-              className='-rotate-[1.45deg] object-contain mix-blend-luminosity'
-              priority
-            />
-            {/* Gradient overlay */}
-            <div className='absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)]' />
-          </div>
-
-          {/* Rating card */}
-          <div className='absolute bottom-6 left-1/2 z-20 w-[349px] -translate-x-1/2 rounded-2xl border border-[#252B37] bg-black p-4 sm:bottom-6 lg:bottom-16 lg:w-[316px] lg:rounded-[20px] lg:p-5'>
-            <p className='text-[24px] leading-[36px] font-bold text-white lg:text-[40px] lg:leading-[56px]'>
-              5.0
-            </p>
-            <div className='mt-1 flex items-center gap-1 md:gap-1.5'>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Image
-                  key={i}
-                  src='/icons/star.svg'
-                  alt=''
-                  aria-hidden
-                  width={24}
-                  height={24}
-                  className='h-6 w-6 md:h-8 md:w-8'
-                />
-              ))}
+            {/* portrait wrapper animation */}
+            <div className='absolute top-0 left-0 h-full w-full'>
+              <Image
+                src='/images/pict.png'
+                alt='Portrait'
+                fill
+                priority
+                sizes='(max-width:768px) 100vw, 41vw'
+                className='touch-action user-select webkit-user-drag webkit-user-select user-select-none touch-action-none -translate-x-3 -translate-y-[50px] object-cover mix-blend-luminosity md:-translate-x-0 md:-translate-y-20'
+              />
             </div>
-            <p className='mt-2 text-[16px] leading-[30px] font-semibold text-white/90'>
-              Many Client Trust with me
-            </p>
-          </div>
 
-          {/* Decorative squares (mobile spec) */}
-          <div className='absolute top-[242px] left-[-21px] block h-[69px] w-[103.5px] md:hidden'>
-            <Image
-              src='/icons/rectangle.svg'
-              alt='icon'
-              width='103'
-              height='103'
-            />
+            {/* overlay (no motion) */}
+            <div className='absolute -inset-6 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)] md:-inset-0' />
+
+            {/* rating card animation */}
+            <motion.div
+              {...fmRootProps}
+              {...fmItemProps}
+              className='absolute top-81 left-1/2 w-87.25 -translate-x-1/2 rounded-2xl border border-neutral-800 bg-black p-4 md:top-153 md:w-79 md:rounded-3xl md:p-5'
+            >
+              <div className='flex flex-col gap-2'>
+                <div className='text-display-xs md:text-display-xl font-bold tracking-[-0.02em]'>
+                  5.0
+                </div>
+                <div className='flex items-center gap-2 md:gap-1.5'>
+                  {['s1', 's2', 's3', 's4', 's5'].map((k) => (
+                    <Image
+                      key={k}
+                      src='/icons/star.svg'
+                      alt=''
+                      aria-hidden
+                      width={24}
+                      height={24}
+                      className='h-6 w-6 md:h-8 md:w-8'
+                    />
+                  ))}
+                </div>
+                <div className='text-md font-semibold md:text-xl'>
+                  Many Client Trust with me
+                </div>
+              </div>
+            </motion.div>
+
+            {/* dekor (no motion) */}
+            <div
+              aria-hidden
+              className='absolute top-60.5 left-[-17px] hidden h-17.25 w-25.5 md:hidden'
+            >
+              <div className='bg-primary-400 absolute top-8.5 left-0 h-8.5 w-8.5' />
+              <div className='bg-primary-400 absolute top-0 left-8.5 h-8.5 w-8.5' />
+              <div className='bg-primary-400 absolute top-8.5 left-[69px] h-8.5 w-8.5' />
+            </div>
+
+            <div className='absolute top-60.5 left-[-17px] block h-17.25 w-25.5 md:hidden'>
+              <Image
+                src='/icons/rectangle.svg'
+                alt='icon'
+                width={103}
+                height={103}
+              />
+            </div>
           </div>
         </div>
       </div>

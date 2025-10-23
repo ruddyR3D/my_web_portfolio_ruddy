@@ -19,8 +19,8 @@ function RoundNav({
 }) {
   const border =
     variant === 'accent'
-      ? 'border-[#252B37] text-[#252B37]'
-      : 'border-[#252B37] text-[#252B37]';
+      ? 'border-neutral-800 text-neutral-800'
+      : 'border-neutral-800 text-neutral-800';
   return (
     <button
       type='button'
@@ -51,7 +51,7 @@ function Stars({
         <MaskIcon
           key={i}
           src='/icons/star.svg'
-          className={`h-5 w-5 md:h-8 md:w-8 ${i < value ? 'text-[#F3993F]' : 'text-[#252B37]'}`}
+          className={`h-5 w-5 md:h-8 md:w-8 ${i < value ? 'text-[#F3993F]' : 'text-neutral-800'}`}
           title={`${value}/${max}`}
         />
       ))}
@@ -144,20 +144,20 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className='relative isolate mx-auto max-w-[1440px] bg-black py-10 md:py-20'>
-      <div className='custom-container mx-auto max-w-[1208px]'>
+    <section className='relative isolate mx-auto max-w-360 bg-black py-10 md:py-20'>
+      <div className='custom-container mx-auto flex w-full max-w-302 flex-col gap-6 md:gap-16'>
         {/* Header */}
-        <div className='mx-auto flex max-w-[592px] flex-col items-center gap-2 md:gap-2'>
-          <p className='text-center text-base leading-7 font-medium text-[#91FF02] md:text-lg md:leading-8'>
+        <div className='mx-auto flex max-w-148 flex-col items-center gap-2'>
+          <p className='text-primary-200 text-md text-center leading-7 font-medium md:text-lg md:leading-8'>
             TESTIMONIALS
           </p>
-          <h2 className='text-display-md md:text-display-2xl text-center font-extrabold text-[#FDFDFD]'>
+          <h2 className='text-display-md md:text-display-2xl text-neutral-25 max-w-197.5 px-10 text-center font-extrabold md:px-0'>
             PEOPLE SAYS ABOUT ME
           </h2>
         </div>
 
         {/* List + pager animation wrapper */}
-        <div className='mt-8 md:mt-10'>
+        <div className=''>
           <motion.div animate={pagerCtrl}>
             {/* GRID: inView → trigger stagger */}
             <motion.div
@@ -165,7 +165,7 @@ export default function TestimonialsSection() {
               variants={gridContainer}
               initial='hidden'
               animate={gridInView ? 'show' : 'hidden'}
-              className='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6'
+              className='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 md:gap-y-8.75'
             >
               {visible.map((t, idx) => {
                 const isLeftCol = idx % 2 === 0;
@@ -174,7 +174,7 @@ export default function TestimonialsSection() {
                   <motion.article
                     key={`${t.name}-${idx}-p${page}`}
                     variants={isLeftCol ? fromLeftCard : fromRightCard}
-                    className='box-border flex h-auto transform-gpu flex-col gap-3 rounded-[16px] border border-[#252B37] p-4 will-change-transform md:h-[270px] md:rounded-[20px] md:p-6'
+                    className='box-border flex h-auto transform-gpu flex-col gap-3 rounded-2xl border border-neutral-800 p-4 will-change-transform md:h-67.5 md:rounded-3xl md:p-6'
                   >
                     {/* Top row */}
                     <div className='flex items-center justify-between gap-4'>
@@ -183,7 +183,7 @@ export default function TestimonialsSection() {
                         <h3 className='text-neutral-25 truncate text-lg font-bold md:text-xl'>
                           {t.name}
                         </h3>
-                        <p className='text-md font-regular truncate text-neutral-400 md:text-xl md:font-medium'>
+                        <p className='text-md font-regular truncate text-neutral-400 md:text-lg md:font-medium'>
                           {t.role}
                         </p>
                       </div>
@@ -212,7 +212,7 @@ export default function TestimonialsSection() {
           </motion.div>
 
           {/* Nav buttons */}
-          <div className='pt:mt-8 flex justify-center gap-4 pt-6'>
+          <div className='flex justify-center gap-4 pt-6 md:pt-10'>
             <RoundNav
               icon='left'
               onClick={prev}
