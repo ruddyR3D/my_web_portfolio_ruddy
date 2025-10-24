@@ -65,7 +65,7 @@ export const TESTIMONIALS: Testimonial[] = [
       'Great collaborator—anticipates edge cases and keeps the UX smooth across devices.',
   },
   {
-    name: 'Daniel Cho',
+    name: 'Theressia Wilson',
     role: 'CTO',
     companyLogo: '/icons/icon-paypal.svg',
     rating: 5,
@@ -89,11 +89,11 @@ export const TESTIMONIALS: Testimonial[] = [
       'Great eye for detail. Turned complex interactions into simple, delightful flows.',
   },
   {
-    name: 'Jesicca',
+    name: 'Jesicca Hazel',
     role: 'Enginering Dev',
     companyLogo: '/icons/icon-amazon.svg',
     rating: 5,
-    feedback: 'Organized their work and internal management was outstanding..',
+    feedback: 'Organized their work and internal management was outstanding.',
   },
   {
     name: 'Michele',

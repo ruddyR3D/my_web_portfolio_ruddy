@@ -36,8 +36,8 @@ const HeroSection = () => {
       className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center bg-black py-10 md:py-20'
     >
       {/* dekor (no motion) */}
-      <div className='absolute top-0 left-[192px] h-[663px] w-px bg-neutral-800 md:top-0 md:left-[375px] md:h-[926px]' />
-      <div className='absolute top-20 left-[290px] z-0 h-[542px] w-px bg-neutral-800 md:top-0 md:left-[707px] md:h-[926px]' />
+      <div className='absolute top-0 left-[188px] h-[663px] w-px bg-neutral-800 md:top-0 md:left-[375px] md:h-[926px]' />
+      <div className='absolute top-20 left-[281px] z-0 h-[542px] w-px bg-neutral-800 md:top-0 md:left-[707px] md:h-[926px]' />
       <div
         aria-hidden
         className='absolute bottom-0 left-0 hidden h-23 w-34.5 md:block'
@@ -74,7 +74,7 @@ const HeroSection = () => {
                 <div className='flex w-full flex-col md:w-201.75'>
                   <motion.h1
                     {...fmItemProps}
-                    className='text-display-lg md:text-display-3xl leading-[48px] font-extrabold tracking-[-0.03em] text-white md:leading-tight md:tracking-widest lg:text-[69px] lg:leading-[78px]'
+                    className='text-display-lg md:text-display-3xl leading-[48px] font-extrabold tracking-[-0.03em] text-white md:leading-tight md:tracking-widest lg:text-[68px] lg:leading-[78px]'
                   >
                     BUILDING FAST &amp;{' '}
                     <span className='text-primary-200'>INTERACTIVE</span> WEB
@@ -84,7 +84,7 @@ const HeroSection = () => {
 
                 <motion.p
                   {...fmItemProps}
-                  className='max-w-[42ch] text-lg leading-[32px] font-medium text-neutral-400 md:text-xl'
+                  className='max-w-[42ch] text-lg leading-[32px] font-medium tracking-[-0.015em] text-neutral-400 md:text-xl md:tracking-[0.0em]'
                 >
                   Bridging creativity and functionality to deliver stunning,
                   user-friendly web applications

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useInView, Variants } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 type Project = {
   title: string;
@@ -14,27 +15,27 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: 'ToDoList Apps',
+    title: 'Dashboard SaaS Task Management',
     desc: 'Lorem ipsum dolor sit amet consectetur. Aenean sed commodo aenean nunc lobortis.',
-    href: 'https://my-project-todo-list.vercel.app/',
-    img: '/images/todolist.png',
+    href: 'https://example.com/project-1',
+    img: '/images/project1.png',
   },
   {
-    title: 'Restorant Apps',
+    title: 'Dashboard SaaS Task Management',
     desc: 'Lorem ipsum dolor sit amet consectetur. Aenean sed commodo aenean nunc lobortis.',
-    href: 'https://my-restaurant-apps.vercel.app/',
-    img: '/images/restorantapps.png',
+    href: 'https://example.com/project-2',
+    img: '/images/project2.png',
   },
   {
-    title: 'Social Media Apps',
-    desc: 'Next.js + TypeScript,Tailwind CSS,shadcn/ui,Redux Toolkit,TanStack Query (React Query),Day.js,.',
-    href: 'https://myappssocialmedia.vercel.app',
+    title: 'Dashboard SaaS Task Management',
+    desc: 'Lorem ipsum dolor sit amet consectetur. Aenean sed commodo aenean nunc lobortis.',
+    href: 'https://example.com/project-3',
     img: '/images/project3.png',
   },
   {
-    title: 'Library Apps',
-    desc: 'React + TypeScript,Tailwind CSS,shadcn/ui,Redux Toolkit,TanStack Query,Day.js,ZOD, React Hook Form.',
-    href: 'https://my-library-apps.vercel.app',
+    title: 'Dashboard SaaS Task Management',
+    desc: 'Lorem ipsum dolor sit amet consectetur. Aenean sed commodo aenean nunc lobortis.',
+    href: 'https://example.com/project-4',
     img: '/images/project4.png',
   },
   {
@@ -55,7 +56,7 @@ const containerStagger: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.19, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
   },
 };
 
@@ -65,11 +66,11 @@ const fadeUp: Variants = {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { duration: 0.8, ease: 'easeOut' },
+    transition: { duration: 0.5, ease: 'easeOut' },
   },
 };
 
-export default function PortfolioSection() {
+export default function PortfolioSect() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-10% 0px' });
 
@@ -79,15 +80,15 @@ export default function PortfolioSection() {
       ref={ref}
       className='relative w-full bg-black text-white'
     >
-      <div className='relative isolate mx-auto flex w-full max-w-360 py-12.5 lg:py-20'>
+      <div className='relative isolate mx-auto flex w-full max-w-[1440px] flex-col items-center bg-black py-10 text-white md:py-20'>
         {/* Decor “Group 1”  mobile */}
         <div className='pointer-events-none absolute -top-[21.62px] right-17 z-[2] lg:hidden'>
-          <div className='bg-primary-400 absolute top-[69px] left-[34.5px] h-[34.5px] w-[34.5px] -rotate-90' />
-          <div className='bg-primary-400 absolute top-[34.5px] left-0 h-[34.5px] w-[34.5px] -rotate-90' />
-          <div className='bg-primary-400 absolute top-0 left-[34.5px] h-[34.5px] w-[34.5px] -rotate-90' />
+          <div className='absolute top-[69px] left-[34.5px] h-[34.5px] w-[34.5px] -rotate-90 bg-[#1D3300]' />
+          <div className='absolute top-[34.5px] left-0 h-[34.5px] w-[34.5px] -rotate-90 bg-[#1D3300]' />
+          <div className='absolute top-0 left-[34.5px] h-[34.5px] w-[34.5px] -rotate-90 bg-[#1D3300]' />
         </div>
-        <div className='custom-container flex w-full flex-col gap-6 md:gap-16 lg:gap-16'>
-          {/* Header */}
+        {/* Header */}
+        <div className='custom-container mx-auto flex w-full flex-col gap-8 lg:gap-16'>
           <motion.div
             initial='hidden'
             animate={inView ? 'show' : 'hidden'}
@@ -96,13 +97,13 @@ export default function PortfolioSection() {
           >
             <motion.span
               variants={fadeUp}
-              className='text-primary-200 text-md font-medium tracking-wide md:text-lg'
+              className='text-md text-primary-200 font-medium tracking-wide md:text-lg'
             >
               PORTFOLIO
             </motion.span>
             <motion.h2
               variants={fadeUp}
-              className='text-display-md md:text-display-2xl leading-tight font-extrabold'
+              className='text-display-md md:text-display-2xl text-neutral-25 leading-tight font-extrabold'
             >
               SELECTED WORK
             </motion.h2>
@@ -113,7 +114,7 @@ export default function PortfolioSection() {
             initial='hidden'
             animate={inView ? 'show' : 'hidden'}
             variants={containerStagger}
-            className='grid w-full grid-cols-1 items-center gap-8 md:max-w-302 md:grid-cols-2 md:gap-4 md:gap-y-10 lg:grid-cols-3 lg:gap-5 lg:gap-y-12'
+            className='grid w-full grid-cols-1 items-center gap-8 md:max-w-[1208px] md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-4'
           >
             {projects.map((p, i) => (
               <motion.li
@@ -129,7 +130,7 @@ export default function PortfolioSection() {
                   className='group focus-visible:ring-primary-200/60 relative flex h-full flex-col overflow-hidden rounded-2xl bg-black transition-transform duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:outline-none'
                 >
                   {/* Image */}
-                  <div className='relative aspect-[4/3] w-full overflow-hidden'>
+                  <div className='relative aspect-[4/3] w-full overflow-hidden rounded-2xl'>
                     <Image
                       src={p.img}
                       alt={p.title}
@@ -139,21 +140,22 @@ export default function PortfolioSection() {
                       priority={i < 2}
                     />
                     {/* Hover ring glow */}
-                    <div className='ring-primary-200 group-hover:ring-primary-200 pointer-events-none absolute inset-0 ring-0 transition-all duration-300 group-hover:shadow-[0_8px_60px_rgba(145,255,2,0.18)] group-hover:ring-2' />
-                    {/* Badge VISIT (desktop only per spec) */}
-                    <div className='bg-neutral-25 pointer-events-none absolute top-4/5 left-1/2 hidden h-25 w-25 -translate-x-1/4 -translate-y-1/2 scale-90 transform items-center justify-center rounded-full text-neutral-950 opacity-0 shadow-lg transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 md:flex'>
-                      <span className='text-lg leading-[32px] font-bold select-none'>
-                        VISIT
-                      </span>
-                    </div>
+                    <div className='ring-primary-200/0 group-hover:ring-primary-200/40 pointer-events-none absolute inset-0 ring-0 transition-all duration-300 group-hover:shadow-[0_8px_60px_rgba(145,255,2,0.18)] group-hover:ring-2' />
                   </div>
 
                   {/* Texts */}
-                  <div className='lg;gap-4 flex flex-1 flex-col gap-3 pt-3 md:pt-4 lg:pt-4'>
-                    <h3 className='md:text-display-xs text-xl leading-snug font-bold'>
+
+                  {/* Badge VISIT (desktop only per spec) */}
+                  <div className='bg-neutral-25 pointer-events-none absolute top-2/3 left-1/2 flex h-[100px] w-[100px] -translate-x-1/3 -translate-y-1/2 scale-90 transform items-center justify-center rounded-full text-neutral-950 opacity-0 shadow-lg transition-all duration-300 group-hover:scale-100 group-hover:opacity-100'>
+                    <span className='text-lg leading-8 font-bold select-none'>
+                      VISIT
+                    </span>
+                  </div>
+                  <div className='lg;gap-4 flex flex-1 flex-col gap-3 pt-3 lg:pt-4'>
+                    <h3 className='text-neutral-25 md:text-display-xs text-xl leading-snug font-bold'>
                       {p.title}
                     </h3>
-                    <p className='md:text-md font-regular text-sm leading-7 text-zinc-400'>
+                    <p className='md:text-md font-regular text-sm leading-7 text-neutral-400'>
                       {p.desc}
                     </p>
                   </div>
