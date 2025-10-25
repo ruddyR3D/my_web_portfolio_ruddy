@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import MaskIcon from '@/components/icons/maskicon';
 import { TESTIMONIALS } from '@/components/constants/testimonial-data';
 import Image from 'next/image';
-import { motion, useInView, useAnimation, type Variants } from 'framer-motion';
+import { motion, useAnimation, type Variants } from 'framer-motion';
 
 function RoundNav({
   icon,
@@ -105,9 +105,7 @@ export default function TestimonialsSection() {
   const start = page * itemsPerPage;
   const visible = TESTIMONIALS.slice(start, start + itemsPerPage);
 
-  const gridRef = useRef<HTMLDivElement | null>(null);
-  const gridInView = useInView(gridRef, { once: true, margin: '-12% 0px' });
-
+  // Pager animation controller for slide in/out
   const pagerCtrl = useAnimation();
   useEffect(() => {
     void pagerCtrl.set({ x: 0, opacity: 1 });
@@ -120,7 +118,8 @@ export default function TestimonialsSection() {
       transition: { duration: 0.35, ease: 'easeInOut' },
     });
     setPage((p) => (p - 1 + totalPages) % totalPages);
-    await pagerCtrl.set({ x: -60, opacity: 0 });
+    // IMPORTANT: keep opacity at 1 so content never stays invisible
+    await pagerCtrl.set({ x: -60, opacity: 1 });
     await pagerCtrl.start({
       x: 0,
       opacity: 1,
@@ -135,7 +134,8 @@ export default function TestimonialsSection() {
       transition: { duration: 0.35, ease: 'easeInOut' },
     });
     setPage((p) => (p + 1) % totalPages);
-    await pagerCtrl.set({ x: 60, opacity: 0 });
+    // IMPORTANT: keep opacity at 1 so content never stays invisible
+    await pagerCtrl.set({ x: 60, opacity: 1 });
     await pagerCtrl.start({
       x: 0,
       opacity: 1,
@@ -157,23 +157,24 @@ export default function TestimonialsSection() {
         </div>
 
         {/* List + pager animation wrapper */}
-        <div className=''>
+        <div>
           <motion.div animate={pagerCtrl}>
-            {/* GRID: inView → trigger stagger */}
+            {/* GRID: retrigger variants on page change to avoid stuck hidden state */}
             <motion.div
-              ref={gridRef}
+              key={page}
               variants={gridContainer}
               initial='hidden'
-              animate={gridInView ? 'show' : 'hidden'}
+              animate='show'
               className='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 md:gap-y-8.75'
             >
               {visible.map((t, idx) => {
                 const isLeftCol = idx % 2 === 0;
-
                 return (
                   <motion.article
                     key={`${t.name}-${idx}-p${page}`}
                     variants={isLeftCol ? fromLeftCard : fromRightCard}
+                    initial='hidden'
+                    animate='show'
                     className='box-border flex h-auto transform-gpu flex-col gap-3 rounded-2xl border border-neutral-800 p-4 will-change-transform md:h-67.5 md:rounded-3xl md:p-6'
                   >
                     {/* Top row */}
