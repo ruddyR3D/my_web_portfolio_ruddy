@@ -98,7 +98,7 @@ export default function WorkingSection() {
                   alt={c.title}
                   fill
                   sizes='80px'
-                  className='object-cover'
+                  className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-cover'
                   priority
                 />
               </div>
@@ -119,7 +119,7 @@ export default function WorkingSection() {
                       alt=''
                       width={32}
                       height={32}
-                      className={`h-8 w-8 shrink-0 ${c.positive ? '' : 'opacity-40'}`}
+                      className={`touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none h-8 w-8 shrink-0 ${c.positive ? '' : 'opacity-40'}`}
                     />
                     <span
                       className={

@@ -230,7 +230,7 @@ export default function ContactSection({
               src='/images/pict.png'
               alt='Portrait'
               fill
-              className='object-cover mix-blend-luminosity'
+              className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-cover mix-blend-luminosity'
               priority
             />
 
@@ -320,7 +320,7 @@ export default function ContactSection({
                 >
                   Your name
                 </label>
-                <div className='flex items-center gap-2 rounded-2xl border border-neutral-800 px-4 py-3'>
+                <div className='flex items-center gap-2 rounded-2xl border border-neutral-800 px-4 py-3 hover:shadow-[0_0_60px_rgba(145,255,2,0.6)]'>
                   <input
                     id='name'
                     name='name'
@@ -342,7 +342,7 @@ export default function ContactSection({
                 >
                   Email address
                 </label>
-                <div className='flex items-center gap-2 rounded-2xl border border-neutral-800 px-4 py-3'>
+                <div className='flex items-center gap-2 rounded-2xl border border-neutral-800 px-4 py-3 hover:shadow-[0_0_60px_rgba(145,255,2,0.6)]'>
                   <input
                     id='email'
                     name='email'
@@ -364,7 +364,7 @@ export default function ContactSection({
                 >
                   Message
                 </label>
-                <div className='h-[156px] rounded-2xl border border-neutral-800 px-4 py-3 md:h-[216px]'>
+                <div className='h-[156px] rounded-2xl border border-neutral-800 px-4 py-3 hover:shadow-[0_0_60px_rgba(145,255,2,0.6)] md:h-[216px]'>
                   <textarea
                     id='message'
                     name='message'
@@ -429,7 +429,7 @@ function SocialIcon({
       href={href}
       target='_blank'
       rel='noopener noreferrer'
-      className='hover:border-primary-200 focus-visible:ring-primary-200 grid h-12 w-12 place-items-center rounded-full border border-neutral-800 transition-colors focus-visible:ring-2 focus-visible:outline-none md:h-16 md:w-16'
+      className='hover:border-primary-200 focus-visible:ring-primary-200 grid h-12 w-12 place-items-center rounded-full border border-neutral-800 transition-colors hover:shadow-[0_0_60px_rgba(145,255,2,0.9)] focus-visible:ring-2 focus-visible:outline-none md:h-16 md:w-16'
     >
       <Image
         src={src}

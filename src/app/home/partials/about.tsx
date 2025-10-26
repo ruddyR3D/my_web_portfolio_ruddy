@@ -83,7 +83,7 @@ export default function AboutSection() {
                   src='/images/image-1.png'
                   alt=''
                   fill
-                  className='object-contain'
+                  className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-contain'
                   sizes='(max-width: 1184px) 20vw, 238px'
                 />
               </div>
@@ -95,7 +95,7 @@ export default function AboutSection() {
                   src='/images/image-2.png'
                   alt=''
                   fill
-                  className='object-contain'
+                  className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-contain'
                   sizes='(max-width: 1184px) 21vw, 250px'
                 />
               </div>
@@ -107,7 +107,7 @@ export default function AboutSection() {
                   src='/images/image-3.png'
                   alt=''
                   fill
-                  className='object-contain'
+                  className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-contain'
                   sizes='(max-width: 1184px) 10vw, 117px'
                 />
               </div>
@@ -168,7 +168,7 @@ export default function AboutSection() {
                 src='/images/image-2.png'
                 alt=''
                 fill
-                className='object-contain'
+                className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-contain'
               />
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function AboutSection() {
                 src='/images/image-3.png'
                 alt=''
                 fill
-                className='object-contain'
+                className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-contain'
               />
             </div>
           </div>
@@ -190,7 +190,7 @@ export default function AboutSection() {
                 src='/images/image-1.png'
                 alt=''
                 fill
-                className='object-contain'
+                className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-contain'
               />
             </div>
           </div>

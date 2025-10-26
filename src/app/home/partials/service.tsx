@@ -126,7 +126,7 @@ export default function ServiceSection() {
                     src={s.icon}
                     alt='monitor icon'
                     fill
-                    className='object-contain p-1'
+                    className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-contain p-1'
                     sizes='8'
                     priority={i === 0}
                   />

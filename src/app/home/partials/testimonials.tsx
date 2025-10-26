@@ -192,7 +192,7 @@ export default function TestimonialsSection() {
                       <Image
                         src={t.companyLogo}
                         alt='Company logo'
-                        className='mx-auto h-8 w-auto md:h-12'
+                        className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none mx-auto h-8 w-auto md:h-12'
                         loading='lazy'
                         width={48}
                         height={48}
@@ -200,7 +200,10 @@ export default function TestimonialsSection() {
                     </div>
 
                     {/* Stars */}
-                    <Stars value={t.rating} className='mt-1 md:mt-0' />
+                    <Stars
+                      value={t.rating}
+                      className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none mt-1 md:mt-0'
+                    />
 
                     {/* Feedback */}
                     <p className='text-md text-neutral-25 font-medium md:text-lg'>

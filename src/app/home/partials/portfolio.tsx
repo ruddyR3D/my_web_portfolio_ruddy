@@ -136,7 +136,7 @@ export default function PortfolioSect() {
                       alt={p.title}
                       fill
                       sizes='(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'
-                      className='object-cover transition-transform duration-500 group-hover:scale-105'
+                      className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-cover transition-transform duration-500 group-hover:scale-105'
                       priority={i < 2}
                     />
                     {/* Hover ring glow */}

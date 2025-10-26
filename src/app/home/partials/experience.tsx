@@ -170,7 +170,7 @@ export default function ExperienceSection() {
                     <div className='absolute top-1/2 left-1/2 h-75 w-px origin-top -translate-x-1/2 bg-neutral-800 will-change-transform md:h-75' />
                   )}
                   <motion.span
-                    className='text-primary-200 absolute top-1/2 left-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-800 bg-black font-bold md:h-12 md:w-12'
+                    className='text-primary-200 hover:border-primary-200 absolute top-1/2 left-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-800 bg-black font-bold hover:shadow-[0_0_60px_rgba(145,255,2,0.9)] md:h-12 md:w-12'
                     variants={fadeDownItem}
                   >
                     {item.id}
@@ -194,7 +194,7 @@ export default function ExperienceSection() {
 function CardItem({ item }: { item: ExperienceItem }) {
   const body = (
     <motion.article
-      className='hover:border-primary-200 min-h-85.5 rounded-2xl border border-neutral-800 bg-black p-4 transition-colors md:min-h-71.5 md:rounded-3xl md:p-6'
+      className='hover:border-primary-200 min-h-85.5 rounded-2xl border border-neutral-800 bg-black p-4 transition-colors hover:shadow-[0_0_60px_rgba(145,255,2,0.6)] md:min-h-71.5 md:rounded-3xl md:p-6'
       variants={cardContainer}
       initial='hidden'
       whileInView='show'
@@ -225,7 +225,7 @@ function CardItem({ item }: { item: ExperienceItem }) {
             alt='Company'
             fill
             sizes='114px'
-            className='object-contain object-left'
+            className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none object-contain object-left'
           />
         </motion.div>
       </div>

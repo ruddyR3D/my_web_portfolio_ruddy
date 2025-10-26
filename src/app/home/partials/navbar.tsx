@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { navigtionData } from '@/components/constants/navigation-data';
-import MobileMenu from '@/components/ui/mobilemenu';
+import MobileMenu from '@/components/ui/mobile-menu';
 import { IconHamburger } from '@/components/icons/hamburger';
 
 const Navbar: React.FC = () => {
@@ -44,9 +44,17 @@ const Navbar: React.FC = () => {
     >
       <div className='custom-container flex-between h-20 md:h-20'>
         {/* Brand */}
-        <div className='flex h-[21px] w-[21px] items-center gap-2 md:h-10 md:w-10'>
-          <Image src='/icons/icon-logo.svg' alt='Logo' width={40} height={0} />
-          <p className='text-primary-200 text-md font-bold md:text-xl'>R3D</p>
+        <div className='flex h-auto w-auto min-w-0 items-center gap-2 md:h-10'>
+          <Image
+            src='/icons/icon-logo.svg'
+            alt='Logo'
+            width={40}
+            height={40}
+            className='w-6 flex-shrink-0 md:w-10'
+          />
+          <p className='text-primary-200 text-md font-bold md:text-xl'>
+            Ruddy R3D
+          </p>
         </div>
 
         {/* Desktop nav */}
@@ -81,7 +89,7 @@ const Navbar: React.FC = () => {
         id='mobile-menu'
         open={open}
         onClose={() => setOpen(false)}
-        title='R3D'
+        title='Ruddy R3D'
         items={navigtionData}
       />
     </motion.header>

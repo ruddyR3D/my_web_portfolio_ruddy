@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-primary-200 text-md-bold text-black shadow-xs rounded-full hover:shadow-[0_4px_40px_rgba(145,255,2,0.4)] tranition-shadow',
+          'bg-primary-200 text-md-bold text-black shadow-xs rounded-full hover:shadow-primary-200 shadow-[0px_4px_40px_rgba(145,255,2,0.4)] tranition-shadow',
         outline:
           'border border-neutral-800 bg-transparent text-neutral-800 rounded-full hover:text-primary-200',
         iphone:
