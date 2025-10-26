@@ -190,7 +190,7 @@ const HeroSection = () => {
             <motion.div
               {...fmRootProps}
               {...fmItemProps}
-              className='absolute top-81 left-1/2 w-87.25 -translate-x-1/2 rounded-2xl border border-neutral-800 bg-black p-4 md:top-153 md:w-79 md:rounded-3xl md:p-5'
+              className='absolute top-81 left-1/2 w-87.25 -translate-x-1/2 rounded-2xl border border-neutral-800 bg-black p-4 hover:shadow-[0_0_60px_rgba(145,255,2,0.6)] md:top-153 md:w-79 md:rounded-3xl md:p-5'
             >
               <motion.div
                 variants={rowsContainer}
