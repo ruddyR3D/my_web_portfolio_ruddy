@@ -89,7 +89,7 @@ const HeroSection = () => {
   return (
     <section
       id='home'
-      className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center bg-black py-10 md:py-20'
+      className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center bg-transparent py-10 md:py-20'
     >
       {/* decor (no motion) */}
       <div className='absolute top-0 left-[188px] h-[663px] w-px bg-neutral-800 md:top-0 md:left-[375px] md:h-[926px]' />
@@ -169,7 +169,7 @@ const HeroSection = () => {
         <div className='flex-[4.1] basis-80 md:absolute md:top-1/2 md:right-0 md:h-220.25 md:w-165 md:-translate-y-108'>
           <div className='relative h-116.5 w-full bg-black md:h-220.25'>
             {/* dekor (no motion) */}
-            <div className='bg-primary-200 absolute inset-y-0 -right-6 left-1/2 md:-right-0' />
+            <div className='bg-primary-200 absolute inset-y-0 -right-4 left-1/2 md:-right-0' />
 
             {/* portrait wrapper animation */}
             <div className='absolute top-0 left-0 h-full w-full'>
@@ -179,12 +179,12 @@ const HeroSection = () => {
                 fill
                 priority
                 sizes='(max-width:768px) 100vw, 41vw'
-                className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none -translate-x-3 -translate-y-[50px] object-cover mix-blend-luminosity md:-translate-x-0 md:-translate-y-20'
+                className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none -translate-x-3 -translate-y-[5px] object-cover mix-blend-luminosity md:-translate-x-0 md:-translate-y-20'
               />
             </div>
 
             {/* overlay (no motion) */}
-            <div className='absolute -inset-6 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)] md:-inset-0' />
+            <div className='absolute -inset-4 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)] md:-inset-0' />
 
             {/* rating card animation */}
             <motion.div

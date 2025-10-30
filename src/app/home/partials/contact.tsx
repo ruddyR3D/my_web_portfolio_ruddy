@@ -125,7 +125,7 @@ export default function ContactSection({
   return (
     <motion.section
       id='contact'
-      className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center border-t-0 bg-black pt-3 md:border-t md:border-neutral-800 md:pt-20 md:pb-30'
+      className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center border-t-0 bg-transparent pt-3 md:border-t md:border-neutral-800 md:pt-20 md:pb-30'
       variants={container}
       initial='hidden'
       whileInView='show'
@@ -222,7 +222,7 @@ export default function ContactSection({
           </div>
 
           {/* Gradient overlay  */}
-          <div className='pointer-events-none absolute -inset-5 top-0 left-1/2 z-10 aspect-auto h-full w-screen -translate-x-1/2 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)] md:left-0 md:w-[420px] md:-translate-x-0' />
+          <div className='pointer-events-none absolute -inset-4 top-0 left-1/2 z-10 aspect-auto h-full w-screen -translate-x-1/2 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)] md:left-0 md:w-[420px] md:-translate-x-0' />
 
           {/* CONTACT IMAGE  */}
           <div className='relative aspect-[420/557] h-full w-full overflow-hidden'>
@@ -429,14 +429,14 @@ function SocialIcon({
       href={href}
       target='_blank'
       rel='noopener noreferrer'
-      className='hover:border-primary-200 focus-visible:ring-primary-200 grid h-12 w-12 place-items-center rounded-full border border-neutral-800 transition-colors hover:shadow-[0_0_60px_rgba(145,255,2,0.9)] focus-visible:ring-2 focus-visible:outline-none md:h-16 md:w-16'
+      className='grid h-12 w-12 place-items-center rounded-full border border-neutral-800 transition-colors hover:shadow-[0_0_60px_rgba(145,255,2,0.9)] focus-visible:ring-2 focus-visible:outline-none md:h-16 md:w-16'
     >
       <Image
         src={src}
         alt={alt}
         width={28}
         height={28}
-        className='h-7 w-7 md:h-7 md:w-7'
+        className='h-7 w-7 hover:shadow-[0_0_60px_rgba(145,255,2,0.9)] md:h-7 md:w-7'
       />
     </Link>
   );

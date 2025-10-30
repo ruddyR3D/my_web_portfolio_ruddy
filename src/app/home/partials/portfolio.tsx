@@ -82,7 +82,7 @@ export default function PortfolioSect() {
     >
       <div className='relative isolate mx-auto flex w-full max-w-[1440px] flex-col items-center bg-black py-10 text-white md:py-20'>
         {/* Decor “Group 1”  mobile */}
-        <div className='pointer-events-none absolute -top-[21.62px] right-17 z-[2] lg:hidden'>
+        <div className='pointer-events-none absolute -top-[21.62px] right-17.25 z-[2] lg:hidden'>
           <div className='absolute top-[69px] left-[34.5px] h-[34.5px] w-[34.5px] -rotate-90 bg-[#1D3300]' />
           <div className='absolute top-[34.5px] left-0 h-[34.5px] w-[34.5px] -rotate-90 bg-[#1D3300]' />
           <div className='absolute top-0 left-[34.5px] h-[34.5px] w-[34.5px] -rotate-90 bg-[#1D3300]' />

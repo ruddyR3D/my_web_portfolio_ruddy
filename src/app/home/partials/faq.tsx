@@ -141,14 +141,14 @@ export default function FAQ() {
 
   return (
     <section id='faq' className='mx-auto w-full'>
-      <div className='relative isolate mx-auto flex w-full max-w-[1440px] flex-col items-center bg-black py-10 text-white md:py-20'>
+      <div className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center bg-black py-10 text-white md:py-20'>
         <div className='custom-container mx-auto flex w-full flex-col gap-6 overflow-hidden px-4 md:gap-12 md:px-6 lg:px-8'>
           <motion.div
             variants={container}
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.4 }}
-            className='mx-auto flex w-73 flex-col items-center gap-2 md:w-197.5'
+            className='mx-auto flex w-73 flex-col items-center gap-2 md:w-full'
           >
             <motion.p
               variants={fadeDownHeader}
