@@ -92,8 +92,8 @@ const HeroSection = () => {
       className='relative isolate mx-auto flex w-full max-w-360 flex-col items-center bg-transparent py-10 md:py-20'
     >
       {/* decor (no motion) */}
-      <div className='absolute top-0 left-[188px] h-[663px] w-px bg-neutral-800 md:top-0 md:left-[375px] md:h-[926px]' />
-      <div className='absolute top-20 left-[281px] z-0 h-[542px] w-px bg-neutral-800 md:top-0 md:left-[707px] md:h-[926px]' />
+      <div className='absolute top-0 left-[197px] h-[663px] w-px bg-neutral-800 md:top-0 md:left-[375px] md:h-[926px]' />
+      <div className='absolute top-20 left-[294px] z-0 h-[542px] w-px bg-neutral-800 md:top-0 md:left-[707px] md:h-[926px]' />
       <div
         aria-hidden
         className='absolute bottom-0 left-0 hidden h-23 w-34.5 md:block'
@@ -130,7 +130,7 @@ const HeroSection = () => {
                 <div className='flex w-full flex-col md:w-201.75'>
                   <motion.h1
                     {...fmItemProps}
-                    className='text-display-lg md:text-display-3xl leading-[48px] font-extrabold tracking-[-0.03em] text-white md:leading-tight md:tracking-widest lg:text-[68px] lg:leading-[78px]'
+                    className='text-display-lg md:text-display-3xl leading-[48px] font-extrabold tracking-[-0.0em] text-white md:leading-tight md:tracking-widest lg:text-[68px] lg:leading-[78px]'
                   >
                     BUILDING FAST &amp;{' '}
                     <span className='text-primary-200'>INTERACTIVE</span> WEB
@@ -140,7 +140,7 @@ const HeroSection = () => {
 
                 <motion.p
                   {...fmItemProps}
-                  className='max-w-[42ch] text-lg leading-[32px] font-medium tracking-[-0.015em] text-neutral-400 md:text-xl md:tracking-[0.0em]'
+                  className='max-w-[42ch] text-lg leading-[32px] font-medium tracking-[0.005em] text-neutral-400 md:text-xl md:tracking-[0.0em]'
                 >
                   Bridging creativity and functionality to deliver stunning,
                   user-friendly web applications
@@ -169,7 +169,7 @@ const HeroSection = () => {
         <div className='flex-[4.1] basis-80 md:absolute md:top-1/2 md:right-0 md:h-220.25 md:w-165 md:-translate-y-108'>
           <div className='relative h-116.5 w-full bg-black md:h-220.25'>
             {/* dekor (no motion) */}
-            <div className='bg-primary-200 absolute inset-y-0 -right-4 left-1/2 md:-right-0' />
+            <div className='bg-primary-200 absolute inset-y-0 -right-4 left-1/2 md:-right-1' />
 
             {/* portrait wrapper animation */}
             <div className='absolute top-0 left-0 h-full w-full'>
@@ -179,12 +179,12 @@ const HeroSection = () => {
                 fill
                 priority
                 sizes='(max-width:768px) 100vw, 41vw'
-                className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none -translate-x-3 -translate-y-[5px] object-cover mix-blend-luminosity md:-translate-x-0 md:-translate-y-20'
+                className='touch-action webkit-user-drag-none webkit-user-select-none user-select-none touch-action-none pointer-events-none -translate-x-3 -translate-y-0 object-cover mix-blend-luminosity md:-translate-x-0 md:-translate-y-24'
               />
             </div>
 
             {/* overlay (no motion) */}
-            <div className='absolute -inset-4 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)] md:-inset-0' />
+            <div className='absolute -inset-4 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)] md:-inset-1' />
 
             {/* rating card animation */}
             <motion.div

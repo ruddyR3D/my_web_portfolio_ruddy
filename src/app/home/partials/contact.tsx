@@ -222,7 +222,7 @@ export default function ContactSection({
           </div>
 
           {/* Gradient overlay  */}
-          <div className='pointer-events-none absolute -inset-4 top-0 left-1/2 z-10 aspect-auto h-full w-screen -translate-x-1/2 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)] md:left-0 md:w-[420px] md:-translate-x-0' />
+          <div className='pointer-events-none absolute -inset-4 top-0 left-1/2 z-10 aspect-auto h-full w-full -translate-x-1/2 bg-[linear-gradient(180deg,rgba(0,0,0,0)_-92.59%,#000_88.93%)] md:left-0 md:w-[420px] md:-translate-x-0' />
 
           {/* CONTACT IMAGE  */}
           <div className='relative aspect-[420/557] h-full w-full overflow-hidden'>
